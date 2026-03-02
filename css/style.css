@@ -541,7 +541,7 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   background-position: 78%;
   background-repeat: no-repeat;
   background-size: auto;
-  padding: 60px 5% 80px;
+  padding: 15vh 5% 80px;
   text-align: center;
 }
 .notch-intro h2 {
@@ -581,8 +581,8 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   margin-bottom: 32px; line-height: 1.7;
 }
 .notch-tasting__img {
-  position: absolute; right: 0; top: 0;
-  width: 45vw; height: 120%; overflow: hidden;
+  position: absolute; right: 0; top: -10%; bottom: -10%;
+  width: 45vw; overflow: hidden;
 }
 .notch-tasting__img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .notch-tasting__notes--mobile { display: none; }
