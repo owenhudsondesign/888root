@@ -390,6 +390,30 @@ button, input, textarea { font: inherit; border: none; outline: none; }
 .contact-form--notch .form-field label { font-family: 'Libre Caslon Text', serif; }
 
 /* ========================================
+   CTA BANNER
+   ======================================== */
+.cta-banner {
+  background: #000;
+  text-align: center;
+  padding: 100px 5%;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 20px;
+}
+.cta-banner__title {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 48px; letter-spacing: -1px;
+  font-weight: 400;
+}
+.cta-banner__subtitle {
+  color: #ccc;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 1rem; line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+/* ========================================
    FOOTER
    ======================================== */
 .site-footer {
@@ -519,7 +543,6 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   background-size: auto;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
-  min-height: 65vh;
   padding: 140px 5% 120px;
   text-align: center;
 }
@@ -542,7 +565,7 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   display: flex; gap: 60px;
   align-items: stretch;
 }
-.notch-tasting__notes { flex: 0 0 38%; max-width: 500px; padding-right: 40px; }
+.notch-tasting__notes { flex: 1; max-width: 580px; padding-right: 60px; }
 .notch-tasting__notes h2 {
   color: #1a1b1f;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
@@ -559,8 +582,8 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   color: #333; font-size: 0.95em;
   margin-bottom: 32px; line-height: 1.7;
 }
-.notch-tasting__img { flex: 1; margin-right: -5%; min-height: 500px; }
-.notch-tasting__img img { width: 100%; height: 100%; object-fit: cover; }
+.notch-tasting__img { flex: 0 0 35%; max-height: 550px; overflow: hidden; }
+.notch-tasting__img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .notch-tasting__notes--mobile { display: none; }
 
 /* Bottle Cards Row */
