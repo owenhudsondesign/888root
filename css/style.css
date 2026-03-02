@@ -488,67 +488,78 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   width: 44%;
   flex-shrink: 0;
 }
-.notch-hero__text { text-align: left; }
+.notch-hero__text {
+  text-align: left; width: 55%;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  gap: 16px; margin-left: -37px;
+}
 .notch-hero__title {
   color: #fff;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
   font-size: 100px; line-height: 1;
   letter-spacing: -4px;
-  margin-bottom: 16px;
 }
 .notch-hero__subtitle {
   color: #ebebeb;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
-  font-size: 29px; line-height: 34px;
-  margin-bottom: 24px;
+  font-size: 29px; line-height: 24px;
 }
 
-/* Intro */
+/* Intro — map background matching Webflow section-28 */
 .notch-intro {
-  background: #000; padding: 80px 5%; text-align: center;
+  background-color: #fffbec;
+  background-image: url('../assets/images/nantucket-sound-chart-nypl-small.webp');
+  background-position: 78%;
+  background-repeat: no-repeat;
+  background-size: auto;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  min-height: 65vh; padding: 80px 5%;
+  text-align: center;
 }
 .notch-intro h2 {
-  color: #fff;
+  color: #1a1b1f;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
   font-size: 60px; letter-spacing: -2px;
   font-weight: 400; margin-bottom: 32px;
 }
 .notch-intro p {
   font-family: 'Libre Caslon Text', serif;
-  color: #ccc; font-size: 0.95em;
+  color: #333; font-size: 0.95em;
   max-width: 48rem; margin: 0 auto;
   line-height: 1.7;
 }
 
-/* Tasting Notes — side-by-side with sticky image */
-.notch-tasting { background: #000; padding: 80px 5%; }
+/* Tasting Notes — white bg, image bleeds right */
+.notch-tasting { background: #fff; padding: 80px 0 80px 5%; overflow: hidden; }
 .notch-tasting__layout {
   display: flex; gap: 60px;
-  max-width: 1140px; margin: 0 auto;
+  align-items: stretch;
 }
-.notch-tasting__notes { flex: 1; padding-right: 100px; }
+.notch-tasting__notes { flex: 1; padding-right: 40px; }
 .notch-tasting__notes h2 {
-  color: #fff;
+  color: #1a1b1f;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
   font-size: 60px; letter-spacing: -2px;
   font-weight: 400; margin-bottom: 40px;
 }
 .notch-tasting__notes h4 {
-  color: #fff;
+  color: #1a1b1f;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
   margin-bottom: 8px; font-size: 1.1rem;
 }
 .notch-tasting__notes p {
   font-family: 'Libre Caslon Text', serif;
-  color: #ccc; font-size: 0.95em;
+  color: #333; font-size: 0.95em;
   margin-bottom: 32px; line-height: 1.7;
 }
-.notch-tasting__img { flex: 0 0 40%; }
-.notch-tasting__img img { width: 100%; border-radius: 0; }
+.notch-tasting__img { flex: 0 0 45%; margin-right: -5%; }
+.notch-tasting__img img { width: 100%; height: 100%; object-fit: cover; }
 .notch-tasting__notes--mobile { display: none; }
 
 /* Bottle Cards Row */
-.notch-bottles { background: #000; padding: 80px 5%; }
+.notch-bottles { background: #fffdf4; padding: 80px 5%; }
 .notch-bottles__grid {
   display: flex; gap: 20px; justify-content: center;
   max-width: 1140px; margin: 0 auto;
@@ -560,12 +571,12 @@ button, input, textarea { font: inherit; border: none; outline: none; }
 }
 .notch-bottle-card__img img { max-width: 200px; width: 100%; }
 .notch-bottle-card__name {
-  color: #fff;
+  color: #1a1b1f;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
   font-size: 1.1rem;
 }
 .notch-bottle-card__type {
-  color: #ccc;
+  color: #444;
   font-family: 'Libre Caslon Text', serif;
   font-size: 0.9rem; margin-bottom: 8px;
 }
@@ -652,8 +663,6 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   font-family: 'Libre Caslon Text', serif;
   font-size: 1rem; line-height: 1.7;
 }
-.notch-about-block img.desktop-only { display: block; }
-.notch-about-block img.mobile-only { display: none; }
 
 /* ========================================
    AGE GATE MODAL
@@ -825,8 +834,6 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   .notch-about-block { flex-direction: column; }
   .notch-about-block--reverse { flex-direction: column; }
   .notch-about-block img { width: 100%; }
-  .notch-about-block img.desktop-only { display: none; }
-  .notch-about-block img.mobile-only { display: block; }
 
   /* Products page grids */
   .bottle-grid { grid-template-columns: repeat(2, 1fr); }
