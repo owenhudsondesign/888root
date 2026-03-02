@@ -689,7 +689,7 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   display: flex; align-items: center; gap: 40px;
   max-width: 1140px; margin: 0 auto 80px;
 }
-.notch-about-block--reverse { flex-direction: row-reverse; }
+/* --reverse: HTML has text first, image second — default row shows text-left, image-right */
 .notch-about-block img { width: 50%; flex-shrink: 0; }
 .notch-about-block p {
   flex: 1; color: #333;
