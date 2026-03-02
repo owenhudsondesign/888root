@@ -1,0 +1,899 @@
+/* ========================================
+   Triple Eight Distillery — Clean CSS
+   ======================================== */
+
+/* --- Reset --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { font-family: 'Trade Gothic LT Pro Cn18', 'Tradegothicltpro Cn 18', Arial, sans-serif; color: #1a1b1f; line-height: 1.6; background: #000; overflow-x: hidden; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button, input, textarea { font: inherit; border: none; outline: none; }
+
+/* --- Font Faces --- */
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('../assets/fonts/TrajanPro-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('../assets/fonts/TrajanPro-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Trade Gothic LT Pro Cn18';
+  src: url('../assets/fonts/TradeGothicLTPro-Cn18.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Trade Gothic LT Pro';
+  src: url('../assets/fonts/TradeGothicLTPro.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Trade Gothic LT Pro BdCn20';
+  src: url('../assets/fonts/TradeGothicLTPro-BdCn20.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+/* --- Layout Utilities --- */
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 50px; }
+.container--sm { max-width: 48rem; margin: 0 auto; padding: 0 20px; }
+.container--lg { max-width: 1920px; margin: 0 auto; padding: 0 60px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+.nav-spacer { height: 5rem; }
+
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100; background: #000; height: 5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.site-nav__inner {
+  display: flex; justify-content: center; align-items: center;
+  height: 100%; position: relative; max-width: 100%; padding: 0 20px;
+}
+.site-nav__logo { position: absolute; z-index: 5; }
+.site-nav__logo img { width: 50px; height: auto; }
+.site-nav__menu {
+  display: flex; justify-content: space-between; align-items: center; width: 100%;
+}
+.site-nav__links { display: flex; align-items: center; gap: 0; }
+.site-nav__links--right { margin-left: auto; }
+.site-nav__link {
+  color: #f3f3f3;
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  font-size: 17px; letter-spacing: 0.25px; line-height: 20px;
+  padding: 5px 10px; margin: 0 5px; transition: color 0.2s;
+}
+.site-nav__link:hover { color: rgba(219,219,219,0.75); }
+.site-nav__link--active { color: #fff; }
+
+/* Hamburger */
+.hamburger {
+  display: none; background: none; cursor: pointer; padding: 8px; z-index: 10;
+}
+.hamburger__line {
+  display: block; width: 22px; height: 2px; background: #f3f3f3;
+  margin: 5px 0; transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.is-active .hamburger__line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.is-active .hamburger__line:nth-child(2) { opacity: 0; }
+.hamburger.is-active .hamburger__line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn {
+  display: inline-block;
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: 1px;
+  padding: 12px 25px; border-radius: 3px;
+  font-size: 14px; line-height: 20px;
+  cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.btn--light { background: #fff; color: #000; }
+.btn--light:hover { background: #e0e0e0; }
+.btn--dark { background: #000; color: #fff; }
+.btn--dark:hover { background: #222; }
+.btn--outline {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.btn--outline:hover {
+  background: rgba(255,255,255,0.05); color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+.btn--serif { font-family: 'Trajan Pro', 'Times New Roman', serif; }
+
+/* ========================================
+   HERO SECTIONS — Full-bleed background video
+   ======================================== */
+.hero {
+  position: relative; height: 90vh; overflow: hidden; background: #000;
+}
+.hero__video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.hero__poster {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+/* Once video loads, it covers the poster naturally */
+.hero__overlay {
+  position: relative; z-index: 1;
+  display: flex; align-items: center;
+  height: 100%; padding: 0 50px;
+}
+.hero__content {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  width: 100%; height: 90vh;
+  padding-left: 50px; padding-right: 50px;
+}
+.hero__content--row {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero__title {
+  color: #fff;
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  font-size: 6.5rem; line-height: 5.2rem;
+  letter-spacing: -5px; text-transform: uppercase;
+}
+.hero__subtitle {
+  color: #fff;
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+  font-size: 1.9rem; line-height: 2.1rem;
+  margin-top: 12px; margin-bottom: 20px;
+}
+.hero__brand-img {
+  z-index: 1; flex: 0 1 auto; max-width: 50%;
+  max-height: 75vh;
+  display: block; position: relative; right: auto;
+  object-fit: contain;
+}
+
+/* ========================================
+   SECTION HEADINGS
+   ======================================== */
+.section-heading {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  text-transform: uppercase; letter-spacing: -6px;
+  font-size: 10rem; line-height: 8rem;
+}
+.section-heading--light { color: #f3f3f3; }
+.section-heading--dark { color: #000; }
+.section-heading--center { text-align: center; margin-top: 100px; margin-bottom: 50px; }
+.section-heading--left { text-align: left; }
+
+.heading-sm {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  text-align: left;
+}
+
+/* ========================================
+   HOME — THE NOTCH FEATURE
+   ======================================== */
+.section-notch-home {
+  background-color: #fffdf4;
+  background-image: url('../assets/images/nantucket-sound-chart-nypl-small.webp');
+  background-position: center; background-size: auto;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  min-height: 90vh; padding: 100px 50px;
+}
+.section-notch-home__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; width: 100%; max-width: 800px;
+  padding: 20px; align-items: center;
+}
+.section-notch-home__img { width: 100%; }
+.section-notch-home__text {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+}
+.section-notch-home__text p {
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+  text-align: left;
+}
+
+/* ========================================
+   HOME — PRODUCTS GRID
+   Webflow uses a 5-column quick-stack
+   ======================================== */
+.section-products-home {
+  background: #000;
+  padding: 100px 45px 100px;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: stretch;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px; padding: 20px;
+}
+.product-card {
+  background: #fff; border-radius: 6px;
+  padding: 26px 20px;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+.product-card img { width: 100%; margin-bottom: 16px; }
+.product-card h3 {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  text-align: center; margin-bottom: 8px;
+}
+.product-card p {
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+  text-align: center; margin-bottom: 16px; flex: 1;
+}
+
+/* ========================================
+   VIMEO SECTION
+   ======================================== */
+.section-vimeo {
+  padding: 60px 20px; max-width: 940px; margin: 0 auto;
+}
+.video-embed {
+  position: relative; padding-top: 56.27%;
+  background: #000;
+}
+.video-embed iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: 0;
+}
+
+/* ========================================
+   BRAND FAMILY SECTION — Full-bleed bg image
+   ======================================== */
+.section-brand-family {
+  background-image: url('../assets/images/brand-cloud-med.webp');
+  background-position: center; background-size: cover;
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh;
+}
+.section-brand-family__inner {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 50px;
+}
+.section-brand-family__logos { max-width: 600px; width: 100%; }
+
+/* ========================================
+   MERCH SECTION
+   ======================================== */
+.section-merch {
+  background: #000;
+  padding: 100px 45px;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; overflow: hidden;
+}
+.merch-layout {
+  z-index: 1; display: flex; gap: 12px;
+  width: 100%; position: relative;
+  justify-content: space-between; align-items: stretch;
+}
+.merch-left {
+  display: flex; flex-direction: column;
+  justify-content: space-between; gap: 47px;
+  flex: 0 0 auto;
+}
+.merch-imgs {
+  display: flex; gap: 18px; align-items: center;
+  border-radius: 6px;
+}
+.merch-imgs img { width: 250px; border-radius: 6px; }
+.merch-right {
+  flex: 1; display: flex;
+  justify-content: flex-start; align-items: flex-end;
+}
+.merch-right img {
+  border-radius: 6px; max-width: 70%; max-height: 63vh;
+}
+.section-merch__wave {
+  width: 100%; max-width: none; height: auto;
+  position: absolute; bottom: -30px; left: 0;
+  z-index: 0; pointer-events: none;
+}
+
+/* ========================================
+   INSTAGRAM / SOCIAL SECTION
+   ======================================== */
+.section-social {
+  padding: 80px 45px 50px; background: #000; text-align: center;
+}
+.section-social .elfsight-app-5091c63f-f739-47f8-8d8e-90a14d7f2245 {
+  margin-bottom: 50px;
+}
+
+/* ========================================
+   CONTACT FORM SECTION
+   ======================================== */
+.section-contact {
+  display: flex; justify-content: center; align-items: center; padding: 0;
+}
+.section-contact--home { height: auto; }
+.contact-layout {
+  display: flex; gap: 44px;
+  justify-content: center; align-items: center;
+  padding: 0 45px; width: 100%;
+}
+.contact-image {
+  aspect-ratio: 1; object-fit: cover; border-radius: 6px; width: 40vw;
+}
+.contact-form-wrap { background: #fff; width: 40vw; padding: 5%; }
+.contact-form-wrap--full { background: #fff; width: 100%; padding: 7rem 5%; }
+.contact-form {
+  display: grid; gap: 1.5rem;
+  max-width: 35rem; margin: 0 auto;
+}
+.contact-form h2 {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  font-size: 3rem; font-weight: 400;
+  text-align: center; margin-bottom: 3rem;
+}
+.form-field label {
+  display: block;
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  font-size: 1rem; margin-bottom: 0.5rem;
+}
+.form-field input,
+.form-field textarea {
+  width: 100%; border: 1px solid #000; border-radius: 6px;
+  padding: 0.5rem 0.75rem; font-size: 1rem; line-height: 1.6;
+  min-height: 2.75rem; background: #fff; color: #000;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.form-field textarea {
+  min-height: 11.25rem; resize: vertical;
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+}
+.form-field input:focus,
+.form-field textarea:focus { border-color: #000; outline: none; }
+.form-checkbox {
+  display: flex; align-items: center; gap: 0.5rem; padding-left: 0;
+}
+.form-checkbox input[type="checkbox"] {
+  width: 1.125rem; height: 1.125rem; min-width: 1.125rem;
+  accent-color: #000; cursor: pointer;
+}
+.form-checkbox label {
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+  font-size: 0.875rem; line-height: 1.5;
+}
+.form-checkbox a { text-decoration: underline; }
+.form-submit { text-align: center; }
+.form-success, .form-error { display: none; padding: 1.5rem; margin-top: 1.5rem; }
+.form-success { background: #f4f4f4; }
+.form-success p { font-weight: 600; }
+.form-error p { color: #e23939; }
+
+/* Notch page form variant */
+.contact-form--notch h2 {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+}
+.contact-form--notch .form-field input,
+.contact-form--notch .form-field textarea {
+  background: #fffdf4;
+}
+.contact-form--notch .form-checkbox label { font-family: 'Libre Caslon Text', serif; }
+.contact-form--notch .form-field label { font-family: 'Libre Caslon Text', serif; }
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.site-footer {
+  background: #e2e2e2; border-bottom: 1px solid #e4ebf3;
+  padding: 50px 30px 15px;
+}
+.site-footer__inner {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  max-width: 900px; margin: 0 auto;
+}
+.site-footer__logo img { width: 100px; }
+.site-footer__links { display: flex; flex-direction: column; }
+.site-footer__link {
+  color: #1a1b1f; font-size: 14px; line-height: 16px;
+  margin-top: 12px; margin-bottom: 6px; transition: color 0.2s;
+}
+.site-footer__link:hover { color: rgba(26,27,31,0.75); }
+.site-footer__divider {
+  background: #e4ebf3; height: 1px; width: 100%;
+  max-width: 940px; margin: 70px auto 15px;
+}
+
+/* ========================================
+   ALL-PRODUCTS PAGE — Bottle grids
+   ======================================== */
+.section-product-category {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 0 20px 100px;
+}
+.section-product-category--light { background-color: #fffdf4; }
+.section-product-category--light-map {
+  background-color: #fffdf4;
+  background-image: url('../assets/images/nantucket-sound-chart-nypl-small.webp');
+  background-position: center; background-size: auto;
+  position: relative; z-index: 0;
+}
+.section-product-category--dark { background: #000; }
+
+.bottle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; padding: 20px; width: 100%;
+}
+.bottle-card {
+  background: #e2e2e2; border-radius: 6px;
+  display: flex; flex-direction: column;
+  align-items: center; padding: 50px 30px;
+  text-align: center; height: 100%;
+}
+.bottle-card img {
+  aspect-ratio: 1; object-fit: contain;
+  max-width: 80%; margin-bottom: 16px;
+}
+.bottle-card img.vodka,
+.bottle-card img.langosta {
+  object-fit: cover;
+}
+.bottle-card h3 {
+  font-family: 'Trade Gothic LT Pro BdCn20', Arial, sans-serif;
+  margin-bottom: 8px;
+}
+.bottle-card p {
+  font-family: 'Trade Gothic LT Pro Cn18', Arial, sans-serif;
+  margin-bottom: 16px; flex: 1;
+}
+
+/* 8 vodkas = 4 columns for that section */
+.section-product-category--dark .bottle-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+/* Craft cocktails = 3 columns */
+/* Tequila = 2 columns */
+
+/* ========================================
+   THE NOTCH PAGE
+   ======================================== */
+
+/* Hero — landscape background image */
+.notch-hero {
+  position: relative;
+  background-image: url('../assets/images/Randy-Hudson-Nantucket-4-dark.webp');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+/* Bottle + text overlay — pulled up from below to overlap into hero */
+.notch-hero__inner {
+  display: flex; align-items: center; justify-content: flex-start;
+  max-width: 1140px; margin: 0 auto;
+  position: relative; top: -670px;
+  gap: 40px;
+}
+.notch-hero__bottle {
+  width: 44%;
+  flex-shrink: 0;
+}
+.notch-hero__text { text-align: left; }
+.notch-hero__title {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 100px; line-height: 1;
+  letter-spacing: -4px;
+  margin-bottom: 16px;
+}
+.notch-hero__subtitle {
+  color: #ebebeb;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 29px; line-height: 34px;
+  margin-bottom: 24px;
+}
+
+/* Intro */
+.notch-intro {
+  background: #000; padding: 80px 5%; text-align: center;
+}
+.notch-intro h2 {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 60px; letter-spacing: -2px;
+  font-weight: 400; margin-bottom: 32px;
+}
+.notch-intro p {
+  font-family: 'Libre Caslon Text', serif;
+  color: #ccc; font-size: 0.95em;
+  max-width: 48rem; margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Tasting Notes — side-by-side with sticky image */
+.notch-tasting { background: #000; padding: 80px 5%; }
+.notch-tasting__layout {
+  display: flex; gap: 60px;
+  max-width: 1140px; margin: 0 auto;
+}
+.notch-tasting__notes { flex: 1; padding-right: 100px; }
+.notch-tasting__notes h2 {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 60px; letter-spacing: -2px;
+  font-weight: 400; margin-bottom: 40px;
+}
+.notch-tasting__notes h4 {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  margin-bottom: 8px; font-size: 1.1rem;
+}
+.notch-tasting__notes p {
+  font-family: 'Libre Caslon Text', serif;
+  color: #ccc; font-size: 0.95em;
+  margin-bottom: 32px; line-height: 1.7;
+}
+.notch-tasting__img { flex: 0 0 40%; }
+.notch-tasting__img img { width: 100%; border-radius: 0; }
+.notch-tasting__notes--mobile { display: none; }
+
+/* Bottle Cards Row */
+.notch-bottles { background: #000; padding: 80px 5%; }
+.notch-bottles__grid {
+  display: flex; gap: 20px; justify-content: center;
+  max-width: 1140px; margin: 0 auto;
+}
+.notch-bottle-card {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 20px 5px; text-align: center; flex: 1;
+  gap: 15px;
+}
+.notch-bottle-card__img img { max-width: 200px; width: 100%; }
+.notch-bottle-card__name {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 1.1rem;
+}
+.notch-bottle-card__type {
+  color: #ccc;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 0.9rem; margin-bottom: 8px;
+}
+.notch-bottle-card .btn {
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+}
+
+/* Awards — sticky scrolling image panel */
+.notch-awards {
+  background: #fffdf4; padding: 100px 5% 80px;
+}
+.notch-awards__title {
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 60px; letter-spacing: -2px;
+  font-weight: 700; text-align: center;
+  margin-bottom: 60px;
+}
+.awards-teaser {
+  display: flex; max-width: 1920px;
+  margin: 0 auto; padding: 0 60px;
+}
+.awards-copy-col { width: 50%; position: relative; }
+.awards-img-col {
+  width: 50%; position: sticky;
+  top: 5vh; height: 90vh; overflow: hidden;
+}
+.award-block {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: flex-start;
+  min-height: 100vh;
+}
+.award-block__img--mobile { display: none; }
+.award-block__content { max-width: 650px; padding-right: 14%; }
+.award-block__content h2 {
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 3em; font-weight: 700; line-height: 1.2em;
+  margin-bottom: 8px;
+}
+.award-block__content h4 {
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  margin-bottom: 16px;
+}
+.award-block__content p {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 0.95em; line-height: 1.7;
+  padding-top: 1em;
+}
+.awards-img-col img {
+  position: absolute; inset: 0;
+  width: 80%; height: 100%;
+  object-fit: contain; aspect-ratio: 1;
+  transition: opacity 0.5s ease;
+}
+/* z-index stacking for award images */
+.awards-img-col img:nth-child(1) { z-index: 4; }
+.awards-img-col img:nth-child(2) { z-index: 3; }
+.awards-img-col img:nth-child(3) { z-index: 2; }
+
+/* Video section on Notch page */
+.notch-video {
+  background: #000; padding: 0;
+}
+.notch-video__inner {
+  max-width: 1140px; margin: 0 auto; padding: 60px 5%;
+}
+
+/* About */
+.notch-about { background: #000; padding: 100px 5%; }
+.notch-about__title {
+  color: #fff;
+  font-family: 'Trajan Pro', 'Times New Roman', serif;
+  font-size: 60px; letter-spacing: -2px;
+  font-weight: 400; text-align: center;
+  margin-bottom: 60px;
+}
+.notch-about-block {
+  display: flex; align-items: center; gap: 40px;
+  max-width: 1140px; margin: 0 auto 80px;
+}
+.notch-about-block--reverse { flex-direction: row-reverse; }
+.notch-about-block img { width: 50%; flex-shrink: 0; }
+.notch-about-block p {
+  flex: 1; color: #ccc;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 1rem; line-height: 1.7;
+}
+.notch-about-block img.desktop-only { display: block; }
+.notch-about-block img.mobile-only { display: none; }
+
+/* ========================================
+   AGE GATE MODAL
+   ======================================== */
+.age-gate {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  z-index: 999999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1; transition: opacity 0.4s, visibility 0.4s;
+}
+.age-gate.is-hidden {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.age-gate__card {
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px; padding: 48px 56px;
+  max-width: 440px; width: 90%; text-align: center;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03) inset;
+  position: relative; overflow: hidden;
+}
+.age-gate__card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+}
+.age-gate__title {
+  font-size: 26px; font-weight: 600; color: #fff;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+}
+.age-gate__subtitle {
+  font-size: 15px; color: rgba(255,255,255,0.5);
+  margin-bottom: 32px; line-height: 1.5;
+}
+.age-gate__divider {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  margin: 0 auto 28px;
+}
+.age-gate__question {
+  font-size: 17px; color: rgba(255,255,255,0.9); margin-bottom: 28px;
+}
+.age-gate__buttons {
+  display: flex; gap: 16px; justify-content: center; margin-bottom: 32px;
+}
+.age-gate__btn {
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 16px 48px; border: none; border-radius: 3px;
+  cursor: pointer; transition: all 0.25s;
+}
+.age-gate__btn--yes {
+  background: #fff; color: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+}
+.age-gate__btn--yes:hover {
+  background: #f0f0f0; transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(255,255,255,0.15);
+}
+.age-gate__btn--no {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.age-gate__btn--no:hover {
+  background: rgba(255,255,255,0.05); color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+.age-gate__disclaimer {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  line-height: 1.6; max-width: 320px; margin: 0 auto;
+}
+.age-gate__denied { display: none; text-align: center; }
+.age-gate__denied.is-visible { display: block; }
+.age-gate__denied-title { font-size: 18px; color: #e8485f; margin-bottom: 16px; }
+.age-gate__denied-text { font-size: 14px; color: rgba(255,255,255,0.5); }
+.age-gate__content.is-hidden { display: none; }
+
+/* ========================================
+   GSAP ANIMATION HELPERS
+   ======================================== */
+.reveal { opacity: 0; transform: translateY(30px); }
+.reveal-left { opacity: 0; transform: translateX(-30px); }
+.reveal-right { opacity: 0; transform: translateX(30px); }
+
+/* ========================================
+   RESPONSIVE — Desktop large (min 1280)
+   ======================================== */
+@media screen and (min-width: 1280px) {
+  /* no extra notch-hero adjustments needed at this breakpoint */
+}
+
+/* ========================================
+   RESPONSIVE — Tablet (max-width: 991px)
+   ======================================== */
+@media screen and (max-width: 991px) {
+  .container { padding: 0 30px; }
+
+  /* Nav becomes hamburger */
+  .site-nav__menu { display: none; }
+  .site-nav__menu.is-open {
+    display: flex; flex-direction: column;
+    position: fixed; top: 5rem; left: 0; right: 0; bottom: 0;
+    background: #000; padding: 40px; gap: 20px; z-index: 99;
+  }
+  .site-nav__menu.is-open .site-nav__links {
+    flex-direction: column; align-items: center; gap: 10px;
+  }
+  .site-nav__link { font-size: 20px; }
+  .hamburger { display: block; position: absolute; right: 20px; }
+
+  /* Hero */
+  .hero__title { font-size: 4.5rem; line-height: 3.8rem; }
+  .hero__subtitle { font-size: 1.5rem; }
+  .hero__content { padding: 0 30px; height: auto; min-height: 70vh; }
+  .hero__content--row { flex-direction: column; align-items: flex-start; }
+  .hero__brand-img { max-width: 80%; margin-top: 20px; }
+
+  .section-heading { font-size: 6rem; line-height: 5rem; letter-spacing: -4px; }
+
+  /* Home Notch section */
+  .section-notch-home__grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+  .section-notch-home__img { max-width: 400px; margin: 0 auto; }
+
+  /* Home products — 3 columns on tablet */
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Merch */
+  .merch-layout { flex-direction: column; }
+  .merch-right img { max-width: 100%; max-height: none; }
+
+  /* Contact */
+  .contact-layout { flex-direction: column; padding: 0 30px; }
+  .contact-image { width: 100%; }
+  .contact-form-wrap { width: 100%; }
+
+  /* Notch hero — reduce height + overlap on tablet */
+  .notch-hero { height: 64vh; }
+  .notch-hero__inner {
+    top: -468px;
+    justify-content: center; align-items: center;
+  }
+  .notch-hero__title { font-size: 72px; line-height: 88px; }
+
+  /* Tasting notes */
+  .notch-tasting__layout { flex-direction: column; }
+  .notch-tasting__notes { padding-right: 0; }
+  .notch-tasting__img { display: none; }
+  .notch-tasting__notes--mobile { display: block; }
+
+  /* Bottles */
+  .notch-bottles__grid { flex-direction: column; align-items: center; }
+  .notch-bottle-card { max-width: 400px; }
+
+  /* Awards — stack */
+  .awards-teaser { flex-direction: column; padding: 0 30px; }
+  .awards-copy-col { width: 100%; }
+  .awards-img-col { display: none; }
+  .award-block { min-height: auto; padding: 40px 0; }
+  .award-block__img--mobile { display: block; margin-bottom: 24px; }
+  .award-block__img--mobile img { max-width: 100%; border-radius: 6px; }
+  .award-block__content { padding-right: 0; }
+
+  /* About */
+  .notch-about-block { flex-direction: column; }
+  .notch-about-block--reverse { flex-direction: column; }
+  .notch-about-block img { width: 100%; }
+  .notch-about-block img.desktop-only { display: none; }
+  .notch-about-block img.mobile-only { display: block; }
+
+  /* Products page grids */
+  .bottle-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-product-category--dark .bottle-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ========================================
+   RESPONSIVE — Mobile (max-width: 767px)
+   ======================================== */
+@media screen and (max-width: 767px) {
+  .container { padding: 0 20px; }
+
+  .hero { height: 80vh; }
+  .hero__title { font-size: 3.5rem; line-height: 3rem; letter-spacing: -3px; }
+  .hero__subtitle { font-size: 1.2rem; line-height: 1.5rem; }
+  .hero__content { padding: 0 20px; }
+
+  .section-heading { font-size: 4rem; line-height: 3.5rem; letter-spacing: -3px; }
+  .section-heading--center { margin-top: 60px; margin-bottom: 30px; }
+
+  .section-notch-home { padding: 60px 20px; min-height: auto; }
+  .section-products-home { padding: 60px 20px; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .section-brand-family { min-height: 60vh; }
+  .section-brand-family__logos { max-width: 80%; }
+
+  .section-merch { padding: 60px 20px; }
+  .merch-imgs { flex-direction: column; }
+  .merch-imgs img { width: 100%; max-width: 300px; }
+
+  .section-vimeo { padding: 30px 20px; }
+
+  .bottle-grid { grid-template-columns: 1fr; }
+  .section-product-category--dark .bottle-grid { grid-template-columns: 1fr; }
+  .section-product-category { padding: 60px 15px; }
+
+  .notch-hero { height: auto; }
+  .notch-hero__inner {
+    flex-direction: column; top: -30px; padding-top: 50px;
+  }
+  .notch-hero__bottle { width: 100%; }
+  .notch-hero__title { font-size: 79px; line-height: 68px; text-align: center; }
+  .notch-hero__text { text-align: center; }
+  .notch-hero__subtitle { font-size: 20px; }
+  .notch-intro h2 { font-size: 36px; }
+  .notch-tasting__notes h2 { font-size: 36px; }
+  .notch-awards__title { font-size: 36px; }
+  .notch-about__title { font-size: 36px; }
+  .notch-about-block { gap: 20px; margin-bottom: 40px; }
+}
+
+/* ========================================
+   RESPONSIVE — Small Mobile (max-width: 479px)
+   ======================================== */
+@media screen and (max-width: 479px) {
+  .hero__title { font-size: 2.8rem; line-height: 2.5rem; }
+  .section-heading { font-size: 3rem; line-height: 2.8rem; letter-spacing: -2px; }
+
+  .products-grid { grid-template-columns: 1fr; }
+
+  .age-gate__card { padding: 36px 24px; margin: 16px; }
+  .age-gate__title { font-size: 22px; letter-spacing: 1px; }
+  .age-gate__buttons { flex-direction: column; }
+  .age-gate__btn { padding: 14px 40px; width: 100%; }
+
+  .notch-hero__title { font-size: 50px; line-height: 48px; }
+  .notch-awards__title { font-size: 28px; }
+  .award-block__content h2 { font-size: 1.8em; }
+}
