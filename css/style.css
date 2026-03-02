@@ -541,7 +541,7 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   background-position: 78%;
   background-repeat: no-repeat;
   background-size: auto;
-  padding: 15vh 5% 80px;
+  padding: 40vh 5% 30vh;
   text-align: center;
 }
 .notch-intro h2 {
