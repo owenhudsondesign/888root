@@ -468,31 +468,34 @@ button, input, textarea { font: inherit; border: none; outline: none; }
    THE NOTCH PAGE
    ======================================== */
 
-/* Hero — landscape background image */
+/* Hero — landscape background, bottle overlaps into next section */
 .notch-hero {
   position: relative;
   background-image: url('../assets/images/Randy-Hudson-Nantucket-4-dark.webp');
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 80vh;
+  min-height: 80vh;
+  overflow: visible;
+  z-index: 2;
 }
-/* Bottle + text overlay — pulled up from below to overlap into hero */
 .notch-hero__inner {
-  display: flex; align-items: center; justify-content: flex-start;
+  display: flex; align-items: flex-end; justify-content: flex-start;
   max-width: 1140px; margin: 0 auto;
-  position: relative; top: -670px;
+  padding: 20vh 20px 0;
   gap: 40px;
 }
 .notch-hero__bottle {
   width: 44%;
   flex-shrink: 0;
+  margin-bottom: -12vh;
 }
 .notch-hero__text {
-  text-align: left; width: 55%;
+  text-align: left;
   display: flex; flex-direction: column;
   justify-content: center; align-items: flex-start;
-  gap: 16px; margin-left: -37px;
+  gap: 16px;
+  padding-bottom: 8vh;
 }
 .notch-hero__title {
   color: #fff;
@@ -501,13 +504,14 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   letter-spacing: -4px;
 }
 .notch-hero__subtitle {
-  color: #ebebeb;
+  color: #fff;
   font-family: 'Trajan Pro', 'Times New Roman', serif;
-  font-size: 29px; line-height: 24px;
+  font-size: 29px; line-height: 34px;
 }
 
-/* Intro — map background matching Webflow section-28 */
+/* Intro — map background */
 .notch-intro {
+  position: relative;
   background-color: #fffbec;
   background-image: url('../assets/images/nantucket-sound-chart-nypl-small.webp');
   background-position: 78%;
@@ -515,7 +519,8 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   background-size: auto;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
-  min-height: 65vh; padding: 80px 5%;
+  min-height: 65vh;
+  padding: 80px 5%;
   text-align: center;
 }
 .notch-intro h2 {
@@ -803,12 +808,13 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   .contact-image { width: 100%; }
   .contact-form-wrap { width: 100%; }
 
-  /* Notch hero — reduce height + overlap on tablet */
-  .notch-hero { height: 64vh; }
+  /* Notch hero — tablet */
+  .notch-hero { min-height: 70vh; }
   .notch-hero__inner {
-    top: -468px;
-    justify-content: center; align-items: center;
+    padding: 15vh 30px 0;
+    justify-content: center; align-items: flex-end;
   }
+  .notch-hero__bottle { margin-bottom: -8vh; }
   .notch-hero__title { font-size: 72px; line-height: 88px; }
 
   /* Tasting notes */
@@ -871,13 +877,14 @@ button, input, textarea { font: inherit; border: none; outline: none; }
   .section-product-category--dark .bottle-grid { grid-template-columns: 1fr; }
   .section-product-category { padding: 60px 15px; }
 
-  .notch-hero { height: auto; }
+  .notch-hero { min-height: auto; }
   .notch-hero__inner {
-    flex-direction: column; top: -30px; padding-top: 50px;
+    flex-direction: column; align-items: center;
+    padding: 120px 20px 40px;
   }
-  .notch-hero__bottle { width: 100%; }
+  .notch-hero__bottle { width: 60%; max-width: 350px; margin-bottom: 0; }
+  .notch-hero__text { text-align: center; align-items: center; padding-bottom: 0; }
   .notch-hero__title { font-size: 79px; line-height: 68px; text-align: center; }
-  .notch-hero__text { text-align: center; }
   .notch-hero__subtitle { font-size: 20px; }
   .notch-intro h2 { font-size: 36px; }
   .notch-tasting__notes h2 { font-size: 36px; }
