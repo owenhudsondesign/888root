@@ -228,6 +228,47 @@
       </div>
     </section>
 
+    <!-- Contact -->
+    <section class="section-contact" id="contact" style="background:#fff;">
+      <div class="contact-form-wrap--full">
+        <form class="contact-form" action="https://formspree.io/f/[MY_FORM_ID]" method="POST">
+          <h2>Contact us</h2>
+          <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" required maxlength="256">
+          </div>
+          <div class="form-field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" required maxlength="256">
+          </div>
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" required maxlength="5000" placeholder="Type your message..."></textarea>
+          </div>
+          <div class="form-checkbox">
+            <input type="checkbox" id="contact-terms" name="terms" required>
+            <label for="contact-terms">I accept the <a href="#">Terms</a></label>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn--dark">Submit</button>
+          </div>
+          <div class="form-success" id="form-success">
+            <p>Thank you! Your submission has been received!</p>
+          </div>
+          <div class="form-error" id="form-error">
+            <p>Oops! Something went wrong while submitting the form.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Shop CTA -->
+    <section class="cta-banner">
+      <h2 class="cta-banner__title reveal">Shop the Catalogue</h2>
+      <p class="cta-banner__subtitle reveal">Explore our full range of spirits, craft cocktails, and more.</p>
+      <a href="https://ciscosocialclub.com/" target="_blank" rel="noopener" class="btn btn--light reveal">Order Online</a>
+    </section>
+
   </main>
 
   <!-- Footer -->
